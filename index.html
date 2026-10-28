@@ -614,14 +614,6 @@ h2.sec {
 .sheet .ok { background: var(--okb); color: var(--ok); border-color: var(--ok); }
 .sheet .bad { background: var(--ngb); color: var(--ng); border-color: var(--ng); }
 .sheet .on { background: var(--acb); color: var(--ac); border-color: var(--ac); }
-.sheet .bm-dot::after {
-  content: "★";
-  position: absolute;
-  top: 1px;
-  right: 3px;
-  font-size: .6rem;
-  color: #f59e0b;
-}
 .topic-list { overflow-y: auto; display: flex; flex-direction: column; gap: .4rem; }
 .topic-item {
   text-align: left;
@@ -684,6 +676,143 @@ footer.credit {
 }
 .credit-text { color: var(--mu); }
 .credit-text b { color: var(--tx); font-weight: 750; }
+
+
+/* Usability refinement: calmer spacing, clearer hierarchy, easier tapping */
+header { gap: .35rem; padding-inline: max(.75rem, calc((100vw - 48rem) / 2)); }
+header .icon-btn { flex: 0 0 auto; }
+#app { padding-top: 1.15rem; padding-bottom: 3rem; }
+.hero { padding: 1.5rem 1.35rem 1.25rem; border-radius: 1.15rem; box-shadow: 0 8px 24px -12px rgba(37,99,235,.45); }
+.hero h2 { max-width: 34rem; font-size: clamp(1.3rem, 4vw, 1.65rem); line-height: 1.25; margin-top: .1rem; }
+.hero p { max-width: 34rem; line-height: 1.5; margin-top: .4rem; }
+.hero-tag { font-size: .69rem; letter-spacing: .055em; }
+.stats-row { gap: .75rem; margin-top: 1.1rem; padding-top: .9rem; }
+.stat-box b { font-size: 1.25rem; line-height: 1.3; }
+.stat-box span { font-size: .76rem; }
+h2.sec { margin-top: 1.65rem; margin-bottom: .7rem; font-size: .76rem; letter-spacing: .045em; gap: .6rem; }
+.card { border-radius: .9rem; padding: .9rem 1rem; margin-bottom: .55rem; box-shadow: 0 2px 8px rgba(15,23,42,.035); }
+.card:hover { transform: translateY(-1px); }
+.card-body b { line-height: 1.4; }
+.card-body small { line-height: 1.45; }
+.row2 { gap: .65rem; }
+.row2 .card { min-height: 100px; justify-content: center; }
+.row2 .card-icon { gap: .55rem; }
+.row2 .card-icon svg { flex: 0 0 auto; }
+.big { border-radius: .95rem; padding: 1rem; margin: .55rem 0; box-shadow: 0 2px 8px rgba(15,23,42,.035); }
+.big-title { gap: .7rem; }
+.big small { margin-left: 2rem; line-height: 1.45; }
+.bar { padding-top: .65rem; }
+.bar-top { gap: .4rem; }
+.bar-top button { min-height: 2.45rem; }
+.q { padding: 1rem; border-radius: 1rem; box-shadow: 0 2px 9px rgba(15,23,42,.035); }
+.stem { font-size: 1.03rem; line-height: 1.55; margin-bottom: .85rem; }
+.o { padding: .72rem .8rem; border-radius: .75rem; margin: .5rem 0; }
+.or { align-items: flex-start; }
+.or b { flex: 0 0 1.4rem; margin-top: .03rem; }
+.or .t { line-height: 1.5; }
+.chip { min-height: 2.4rem; padding: .48rem .95rem; }
+.chap-btn { min-height: 2.8rem; }
+.pri { min-height: 3rem; border-radius: .8rem; box-shadow: 0 4px 12px rgba(37,99,235,.22); }
+.res { padding: 1.4rem 1.1rem; }
+.res .sc { font-size: clamp(2.5rem, 10vw, 3.2rem); letter-spacing: -.04em; }
+.res .btns button { min-height: 2.8rem; line-height: 1.35; }
+
+/* A more intentional, compact credit footer */
+footer.credit {
+  max-width: 48rem;
+  padding: 1.25rem .9rem calc(5rem + env(safe-area-inset-bottom, 0px));
+  text-align: left;
+}
+.credit-card {
+  display: flex;
+  width: 100%;
+  gap: .8rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  box-shadow: 0 3px 12px rgba(15,23,42,.045);
+  align-items: center;
+}
+.credit-mark {
+  width: 2.8rem; height: 2.8rem; flex: 0 0 2.8rem;
+  display: grid; place-items: center;
+  border-radius: .8rem;
+  color: white; font-size: .85rem; font-weight: 850; letter-spacing: .02em;
+  background: linear-gradient(145deg, #1e3a8a, #2563eb);
+  box-shadow: 0 4px 10px rgba(37,99,235,.2);
+}
+.credit-info { display: flex; flex: 1; min-width: 0; flex-direction: column; gap: .12rem; }
+.credit-kicker { color: var(--mu); font-size: .62rem; font-weight: 750; letter-spacing: .075em; line-height: 1.4; }
+.credit-text { color: var(--mu); font-size: .78rem; line-height: 1.4; }
+.credit-name { color: var(--tx); font-size: .9rem; line-height: 1.4; font-weight: 780; overflow-wrap: anywhere; }
+.credit-name span { color: var(--mu); font-size: .82rem; font-weight: 650; }
+.credit-badge { flex: 0 0 auto; align-self: center; font-size: .65rem; padding: .32rem .5rem; border-radius: .5rem; white-space: nowrap; }
+.credit-note { margin: .65rem .15rem 0; text-align: center; color: var(--mu); font-size: .72rem; }
+
+:focus-visible { outline: 3px solid color-mix(in srgb, var(--ac) 55%, transparent); outline-offset: 2px; }
+@media (max-width: 520px) {
+  :root { --h: 3.35rem; }
+  header { padding-inline: .55rem; gap: .25rem; }
+  header .icon-btn { min-width: 2.05rem; height: 2.15rem; padding-inline: .35rem; border-radius: .6rem; font-size: .85rem; }
+  .title-wrap { padding-left: .05rem; }
+  header h1 { font-size: .93rem; }
+  .crumb { font-size: .65rem; }
+  #app { padding: .85rem .7rem 2rem; }
+  .hero { padding: 1.2rem 1rem 1rem; border-radius: 1rem; }
+  .stats-row { gap: .35rem; }
+  .stat-box b { font-size: 1.1rem; }
+  .stat-box span { font-size: .68rem; }
+  .row2 { gap: .5rem; }
+  .row2 .card { padding: .8rem; min-height: 94px; }
+  .row2 .card-icon { font-size: .88rem; }
+  .row2 .card-body small { font-size: .76rem; }
+  h2.sec { align-items: flex-start; font-size: .7rem; }
+  .q { padding: .85rem; }
+  .stem { font-size: 1rem; }
+  .credit-card { gap: .6rem; padding: .85rem .75rem; }
+  .credit-mark { width: 2.45rem; height: 2.45rem; flex-basis: 2.45rem; }
+  .credit-kicker { font-size: .57rem; }
+  .credit-name { font-size: .82rem; }
+  .credit-name span { font-size: .76rem; }
+  .credit-badge { display: none; }
+  .chap-nav { gap: .45rem; }
+  .chap-btn { font-size: .82rem; padding: .7rem .45rem; }
+  .res .btns { flex-wrap: wrap; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+
+/* Home dashboard: faster scanning and topic discovery */
+.home-search { position: relative; margin: .95rem 0 1rem; }
+.home-search input { width:100%; min-height:3rem; padding:.78rem .9rem .78rem 2.7rem; border:1px solid var(--bd); border-radius:.9rem; background:var(--cd); color:var(--tx); font-size:.94rem; outline:none; box-shadow:0 2px 8px rgba(15,23,42,.035); }
+.home-search input:focus { border-color:var(--ac); box-shadow:0 0 0 3px var(--acb); }
+.home-search .search-icon { left:.9rem; }
+.home-search-hint { display:flex; justify-content:space-between; gap:.6rem; margin:.42rem .15rem 0; color:var(--mu); font-size:.75rem; }
+.topic-group { margin:0; }
+.topic-empty { display:none; padding:1rem; margin:.5rem 0 1rem; border:1px dashed var(--bd); border-radius:.85rem; color:var(--mu); text-align:center; font-size:.9rem; background:var(--cd); }
+.home-quick-title { margin:.1rem .2rem .55rem; color:var(--mu); font-size:.73rem; font-weight:750; letter-spacing:.07em; text-transform:uppercase; }
+.hero { margin-bottom:.9rem; }
+.hero h2 { max-width:27rem; line-height:1.25; }
+.hero p { max-width:30rem; line-height:1.5; }
+.row2 .card { min-height:5.7rem; }
+.row2 .card-icon { font-size:.94rem; }
+footer.credit { padding-top:1.4rem; padding-bottom:calc(2rem + env(safe-area-inset-bottom, 0px)); }
+body:not(.is-home) footer.credit { padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px)); }
+.credit-card { position:relative; overflow:hidden; border-radius:1.05rem; padding:1rem; border-color:color-mix(in srgb, var(--ac) 16%, var(--bd)); }
+.credit-card::before { content:""; position:absolute; inset:0 auto 0 0; width:3px; background:linear-gradient(180deg,var(--ac),#0ea5e9); }
+.credit-mark { border-radius:.9rem; font-size:.78rem; letter-spacing:.04em; }
+.credit-kicker { letter-spacing:.065em; }
+.credit-note { margin-top:.7rem; font-size:.73rem; }
+@media (max-width:520px) {
+  .home-search { margin:.8rem 0 .9rem; }
+  .home-search input { min-height:2.9rem; font-size:.9rem; }
+  .home-search-hint { font-size:.7rem; }
+  .row2 .card { min-height:5.25rem; }
+  footer.credit { padding-bottom:calc(1.5rem + env(safe-area-inset-bottom, 0px)); }
+  body:not(.is-home) footer.credit { padding-bottom:calc(5rem + env(safe-area-inset-bottom, 0px)); }
+}
+
 </style>
 </head>
 <body>
@@ -699,9 +828,6 @@ footer.credit {
       <h1 id="ttl">Forensic MCQ</h1>
     </div>
   </div>
-  <button class="icon-btn" data-a="topics" title="Switch Topic">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-  </button>
   <button class="icon-btn" data-a="fs" data-d="-1" title="Decrease font">A−</button>
   <button class="icon-btn" data-a="fs" data-d="1" title="Increase font">A+</button>
   <button class="icon-btn" data-a="th" id="thb" title="Toggle theme">☾</button>
@@ -711,9 +837,15 @@ footer.credit {
 
 <footer class="credit">
   <div class="credit-card">
-    <span class="credit-badge">SBMC 55</span>
-    <span class="credit-text">Developed & Curated by <b>Abdullah Al Arafat (SBMC55)</b></span>
+    <div class="credit-mark" aria-hidden="true">FM</div>
+    <div class="credit-info">
+      <span class="credit-kicker">FORENSIC MEDICINE · QUESTION BANK</span>
+      <span class="credit-text">Designed & curated by</span>
+      <strong class="credit-name">Abdullah Al Arafat <span>(SBMC 55)</span></strong>
+    </div>
+    <span class="credit-badge">CREATOR</span>
   </div>
+  <p class="credit-note">Built for focused practice · Designed for smarter revision</p>
 </footer>
 
 <button id="top" data-a="top" title="Scroll to top">
@@ -793,7 +925,7 @@ function card(q, i, m) {
       o += `<div class="${c}" ${qm ? `data-a="s" data-q="${q.id}" data-k="${x.k}"` : ''}><div class="or"><b>${x.k}</b><span class="t">${E(x.t)}</span>${(m === 'L' || rv) && x.k === q.s ? '<span class="tf T">✓ Correct</span>' : ''}${rv && a.s === x.k && x.k !== q.s ? '<span class="tf F">Your answer</span>' : ''}</div></div>`;
     });
   }
-  return `<article class="q" id="c-${q.id}"><div class="qh"><span class="n">#${i + 1}</span><span class="bd">${q.ty.toUpperCase()}</span>${q.ex ? `<span class="bd">${E(q.ex)}</span>` : ''}${q.tg ? `<span class="bd">${E(q.tg)}</span>` : ''}<button class="st ${S.bm[q.id] ? 'on' : ''}" data-a="bm" data-q="${q.id}" title="Bookmark">${S.bm[q.id] ? I.bmSolid : I.bmOutline}</button></div><p class="stem">${E(q.q)}</p>${o}${m !== 'Q' || rv ? (q.h ? `<div class="help"><span class="help-icon">${I.help}</span><div>${E(q.h)}</div></div>` : '') : ''}</article>`;
+  return `<article class="q" id="c-${q.id}"><div class="qh"><span class="n">#${i + 1}</span><span class="bd">${q.ty.toUpperCase()}</span>${q.ex ? `<span class="bd">${E(q.ex)}</span>` : ''}${q.tg ? `<span class="bd">${E(q.tg)}</span>` : ''}</div><p class="stem">${E(q.q)}</p>${o}${m !== 'Q' || rv ? (q.h ? `<div class="help"><span class="help-icon">${I.help}</span><div>${E(q.h)}</div></div>` : '') : ''}</article>`;
 }
 
 function sc(q) {
@@ -808,7 +940,7 @@ const pool = t => t.qs.filter(q => (!V.ex || q.ex === V.ex));
 
 const tc = t => {
   const b = S.best[t.id];
-  return `<button class="card" data-a="open" data-t="${t.id}">
+  return `<button class="card" data-topic-card data-topic="${E(t.name.toLowerCase())}" data-a="open" data-t="${t.id}">
     <div class="card-body"><b>${E(t.name)}</b><small>${t.qs.length} questions</small></div>
     <div class="card-right">${b != null ? `<span class="pill">Best ${b}%</span>` : ''}<span class="arr">›</span></div>
   </button>`;
@@ -831,13 +963,13 @@ function R() {
   $('#thb').textContent = S.theme === 'dark' ? '☀' : '☾';
 
   const isHome = V.v === 'home';
+  document.body.classList.toggle('is-home', isHome);
   $('#backBtn').hidden = isHome;
   $('#homeBtn').hidden = isHome;
 
   let h = '', t = 'Forensic Medicine MCQ', cr = 'Sher-e-Bangla Medical College (SBMC55)';
 
   if (isHome) {
-    const bn = ALL.filter(q => S.bm[q.id]).length;
     h = `
       <div class="hero">
         ${I.scale}
@@ -847,21 +979,16 @@ function R() {
         <div class="stats-row">
           <div class="stat-box"><b>${ALL.length}</b><span>Total MCQs</span></div>
           <div class="stat-box"><b>${TP.length}</b><span>Chapters</span></div>
-          <div class="stat-box"><b>${bn}</b><span>Bookmarked</span></div>
         </div>
       </div>
-      <div class="row2">
-        <button class="card" data-a="open" data-t="mix">
-          <div class="card-body"><div class="card-icon">${I.mix} Mixed Quiz</div><small>All ${ALL.length} questions</small></div>
-        </button>
-        <button class="card" data-a="open" data-t="bm">
-          <div class="card-body"><div class="card-icon">${I.bmSolid} Bookmarks</div><small>${bn} saved items</small></div>
-        </button>
+      <div class="topic-group" data-topic-group="matrix">
+        <h2 class="sec"><span>Matrix Question Bank</span><span>2024–2026 · SBA + MTF</span></h2>
+        ${TP.filter(x => x.mx).map(tc).join('')}
       </div>
-      <h2 class="sec"><span>Matrix Question Bank (2024–2026)</span><span>SBA + MTF</span></h2>
-      ${TP.filter(x => x.mx).map(tc).join('')}
-      <h2 class="sec"><span>DU Chapter-wise Bank (2015–2025)</span><span>${TP.filter(x => !x.mx).length} Chapters</span></h2>
-      ${TP.filter(x => !x.mx).map(tc).join('')}
+      <div class="topic-group" data-topic-group="du">
+        <h2 class="sec"><span>DU Chapter-wise Bank</span><span>2015–2025 · ${TP.filter(x => !x.mx).length} Chapters</span></h2>
+        ${TP.filter(x => !x.mx).map(tc).join('')}
+      </div>
     `;
     const heroIcon = a.querySelector('.hero'); // to insert SVG dynamically
     if (heroIcon) heroIcon.innerHTML = I.scale + heroIcon.innerHTML; // Wait, I already added it in the string. I need to give it class.
@@ -873,7 +1000,7 @@ function R() {
     const T0 = V.t;
     t = T0.name;
     cr = 'Topic Overview & Setup';
-    const p = T0.id === 'bm' ? T0.qs : pool(T0), n = p.length;
+    const p = pool(T0), n = p.length;
     let f = '';
     if (T0.mx) {
       const ex = [...new Set(T0.qs.map(q => q.ex))];
@@ -895,28 +1022,16 @@ function R() {
   } else if (V.v === 'lesson') {
     t = V.name;
     cr = 'Lesson Mode · Study View';
-    const qStr = (V.qSearch || '').trim().toLowerCase();
-    const filtered = qStr
-      ? V.qs.map((q, i) => [q, i]).filter(([q]) =>
-          q.q.toLowerCase().includes(qStr) ||
-          q.o.some(x => x.t.toLowerCase().includes(qStr)) ||
-          (q.h && q.h.toLowerCase().includes(qStr))
-        )
-      : V.qs.map((q, i) => [q, i]);
+    const filtered = V.qs.map((q, i) => [q, i]);
 
     h = `<div class="bar">
            <div class="bar-top">
-             <span>Showing ${filtered.length} of ${V.qs.length} questions</span>
+             <span>${V.qs.length} questions</span>
              <button data-a="hide">${V.hide ? I.eye : I.eyeOff} <span>${V.hide ? 'Show' : 'Hide'} Answers</span></button>
-             <button data-a="jump">${I.grid} <span>Jump</span></button>
-           </div>
-           <div class="search-wrap">
-             <span class="search-icon">${I.search}</span>
-             <input type="search" id="qSearchInput" placeholder="Search keyword in this chapter..." value="${E(V.qSearch || '')}">
            </div>
          </div>
          <div id="list" class="${V.hide ? 'hide' : ''}">
-           ${filtered.length ? filtered.map(([q, i]) => card(q, i, 'L')).join('') : '<p class="sub">No matching questions found.</p>'}
+           ${filtered.map(([q, i]) => card(q, i, 'L')).join('')}
          </div>
          ${V.tv && V.tv.t ? chapNav(V.tv.t.id) : ''}`;
   } else {
@@ -942,7 +1057,6 @@ function R() {
     h = `<div class="bar">
            <div class="bar-top">
              <span id="cnt">${V.sub ? 'Quiz Completed · Review Answers' : ''}</span>
-             <button data-a="jump">${I.grid} <span>Question Map</span></button>
            </div>
            ${V.sub ? '' : '<div class="prog"><div id="progBar"></div></div>'}
          </div>
@@ -955,16 +1069,6 @@ function R() {
   $('#crumb').textContent = cr;
   a.innerHTML = h;
 
-  const sInput = $('#qSearchInput');
-  if (sInput) {
-    sInput.addEventListener('input', e => {
-      V.qSearch = e.target.value;
-      const pos = sInput.selectionStart;
-      R();
-      const ni = $('#qSearchInput');
-      if (ni) { ni.focus(); ni.setSelectionRange(pos, pos); }
-    });
-  }
 
   if (V.v === 'quiz' && !V.sub) cnt();
 }
@@ -1012,11 +1116,7 @@ document.addEventListener('click', e => {
     if (!confirmLeave()) return;
     const closeOv = document.querySelector('.ov');
     if (closeOv) closeOv.remove();
-    const t = d.t === 'mix'
-      ? { id: 'mix', name: 'Mixed Quiz (All Topics)', qs: ALL }
-      : d.t === 'bm'
-      ? { id: 'bm', name: 'Bookmarked Questions', qs: ALL.filter(q => S.bm[q.id]) }
-      : TP.find(x => x.id === d.t);
+    const t = TP.find(x => x.id === d.t);
     go({ v: 'topic', t, ex: '', n: 0 });
   }
   else if (a === 'ex') { V.ex = d.x; R(); }
@@ -1032,13 +1132,6 @@ document.addEventListener('click', e => {
     V.hide = !V.hide;
     $('#list').classList.toggle('hide', V.hide);
     b.innerHTML = V.hide ? `${I.eye} <span>Show Answers</span>` : `${I.eyeOff} <span>Hide Answers</span>`;
-  }
-  else if (a === 'bm') {
-    S.bm[qq.id] = !S.bm[qq.id];
-    if (!S.bm[qq.id]) delete S.bm[qq.id];
-    ST();
-    b.classList.toggle('on', !!S.bm[qq.id]);
-    b.innerHTML = S.bm[qq.id] ? I.bmSolid : I.bmOutline;
   }
   else if (a === 'm') {
     (V.ans[qq.id] = V.ans[qq.id] || {})[d.k] = d.v === '1';
@@ -1062,42 +1155,6 @@ document.addEventListener('click', e => {
   else if (a === 'flt') { V.flt = d.x; R(); }
   else if (a === 'retry') { startQ(V.qs.filter(q => !sc(q).f), V.name, V.tv, true); }
   else if (a === 'again') go(V.tv);
-  else if (a === 'jump') {
-    const el = document.createElement('div');
-    el.className = 'ov';
-    el.innerHTML = `<div class="sheet-box">
-      <div class="sheet-hdr"><b>Jump to Question</b><button class="icon-btn" data-a="closeOv">✕</button></div>
-      <div class="sheet-legend">
-        <span><i class="dot" style="background:var(--acb);border:1px solid var(--ac)"></i> Answered</span>
-        <span><i class="dot" style="background:var(--okb);border:1px solid var(--ok)"></i> Correct</span>
-        <span><i class="dot" style="background:var(--ngb);border:1px solid var(--ng)"></i> Wrong</span>
-        <span>★ Bookmarked</span>
-      </div>
-      <div class="sheet">${V.qs.map((q, i) => {
-        let c = '';
-        if (V.v === 'quiz') {
-          if (V.sub) c = sc(q).f ? 'ok' : 'bad';
-          else if (sc(q).an) c = 'on';
-        }
-        if (S.bm[q.id]) c += ' bm-dot';
-        return `<button class="${c.trim()}" data-a="to" data-q="${q.id}">${i + 1}</button>`;
-      }).join('')}</div>
-    </div>`;
-    document.body.appendChild(el);
-  }
-  else if (a === 'topics') {
-    const curId = V.t ? V.t.id : (V.tv && V.tv.t ? V.tv.t.id : '');
-    const el = document.createElement('div');
-    el.className = 'ov';
-    el.innerHTML = `<div class="sheet-box">
-      <div class="sheet-hdr"><b>Quick Topic Switcher</b><button class="icon-btn" data-a="closeOv">✕</button></div>
-      <div class="topic-list">
-        <button class="topic-item" data-a="home"><b>⌂ Home Dashboard</b><small>${ALL.length} Qs</small></button>
-        ${TP.map(x => `<button class="topic-item ${curId === x.id ? 'cur' : ''}" data-a="open" data-t="${x.id}"><span>${E(x.name)}</span><small>${x.qs.length}</small></button>`).join('')}
-      </div>
-    </div>`;
-    document.body.appendChild(el);
-  }
   else if (a === 'closeOv') {
     const ov = document.querySelector('.ov');
     if (ov) ov.remove();
